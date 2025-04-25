@@ -1,0 +1,122 @@
+
+.stock-management-container {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px;
+    width: 600px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 60%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+.text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .text strong {
+    font-weight: bold;
+  }
+  
+  .stock-management-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .stock-management-header-container img {
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
+}
+  
+  .stock-management-header {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .stock-management-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section-header {
+    color: #3498db;
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .form-group input[type="number"],
+  .form-group input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  .form-actions {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .submit-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stock-management-container {
+      padding: 15px;
+    }
+    
+    .form-section {
+      padding: 15px;
+    }
+  }
