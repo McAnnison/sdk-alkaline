@@ -1,0 +1,137 @@
+.hr-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .dashboard-header h1 {
+    margin: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .stat-card .ant-statistic-title {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .stat-card .ant-statistic-content {
+    font-size: 20px;
+  }
+  
+  .tab-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .table-header h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .status-pending {
+    color: #faad14;
+  }
+  
+  .status-paid {
+    color: #52c41a;
+  }
+  
+  .status-partially_paid {
+    color: #1890ff;
+  }
+  
+  .status-completed {
+    color: #52c41a;
+  }
+  
+  .reports-placeholder, .employees-placeholder {
+    padding: 40px;
+    text-align: center;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1px dashed #d9d9d9;
+    color: #666;
+  }
+  
+  .reports-placeholder p, .employees-placeholder p {
+    margin: 10px 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    
+    .controls {
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .tabs {
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    
+    .stats-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-cards {
+      grid-template-columns: 1fr;
+    }
+  }

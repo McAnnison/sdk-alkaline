@@ -1,70 +1,171 @@
-# Getting Started with Create React App
+# **SDK Alkaline Water Co. Management System**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Overview**
 
-## Available Scripts
+The SDK Alkaline Water Co. Management System is a web-based application designed to streamline stock management and user authentication for workers and administrators. It allows users to manage stock data, track water levels, and handle production and dispatch records efficiently.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## **Features**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Authentication** : Role-based login for workers and administrators.
+* **Stock Management** : Add, view, and manage stock data, including production, dispatch, and water levels.
+* **File Uploads** : Upload images for labels and shrink wrap stock.
+* **Admin Dashboard** : View summarized stock data and analytics.
+* **Responsive Design** : Optimized for desktop and mobile devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## **Technologies Used**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **Frontend**
 
-### `npm run build`
+* React.js
+* React Router
+* Ant Design (UI components)
+* CSS for custom styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Backend**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Node.js with Express.js
+* MongoDB with Mongoose
+* Multer for file uploads
+* JWT for authentication
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## **Installation**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Prerequisites**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Node.js installed on your machine
+* MongoDB installed and running locally or on a cloud service
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **Usage**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **1. Authentication**
 
-## Learn More
+* **Workers** : Sign in to manage stock data.
+* **Admins** : Access the admin dashboard for analytics and stock summaries.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **2. Stock Management**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Fill out the stock form with production, dispatch, and water level details.
+* Upload images for labels and shrink wrap stock.
+* Submit the form to save data to the backend.
 
-### Code Splitting
+### **3. Admin Dashboard**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* View summarized stock data, including production trends and water level alerts.
+* Access uploaded images for verification.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## **Folder Structure**
 
-### Making a Progressive Web App
+**sdk-alkaline/**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**├── frontend/**
 
-### Advanced Configuration
+**│   ├── src/**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**│   │   ├── components/**
 
-### Deployment
+**│   │   │   ├── Auth/**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**│   │   │   │   ├── SignIn.js**
 
-### `npm run build` fails to minify
+**│   │   │   │   ├── SignUp.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**│   │   │   ├── Stock/**
+
+**│   │   │   │   ├── stockForm.js**
+
+**│   │   │   ├── Admin/**
+
+**│   │   │   │   ├── AdminDash.js**
+
+**│   │   ├── styles/**
+
+**│   │   │   ├── signin.css**
+
+**│   │   │   ├── stock.css**
+
+**│   │   │   ├── dashboard.css**
+
+**│   ├── public/**
+
+**│   ├── package.json**
+
+**├── backend/**
+
+**│   ├── models/**
+
+**│   │   ├── User.js**
+
+**│   │   ├── Stock.js**
+
+**│   ├── controllers/**
+
+**│   │   ├── authController.js**
+
+**│   │   ├── stockController.js**
+
+**│   ├── routes/**
+
+**│   │   ├── authRoutes.js**
+
+**│   │   ├── stockRoutes.js**
+
+**│   ├── middleware/**
+
+**│   │   ├── auth.js**
+
+**│   ├── uploads/**
+
+**│   ├── server.js**
+
+**│   ├── package.json**
+
+---
+
+## **API Endpoints**
+
+### **Authentication**
+
+* `POST /api/auth/signup`: Register a new user.
+* `POST /api/auth/login`: Log in and receive a JWT token.
+
+### **Stock Management**
+
+* `POST /api/stocks/save`: Save stock data and uploaded images.
+* `GET /api/stocks/all`: Retrieve all stock data.
+
+# Contributions
+
+Contibutions eare allowed! Please follow these steps: 
+
+1. Fork the repository.
+2. Create a new branch:
+   git checkout -b feature-name
+3. Commit your changes:
+   git commit -m "Add feature-name"
+4. Push to the branch:
+   git push origin feature-name
+5. Open a pull request
+
+
+## **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+## **Contact**
+
+For questions or support, please contact:
+
+
+* **Name** : Your Name
+* **Email** mensahanni98@gmail.com
+* **GitHub** : [M](vscode-file://vscode-app/c:/Users/LENOVO%20i5/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.html)cAnnison

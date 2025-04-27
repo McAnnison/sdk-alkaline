@@ -1,42 +1,132 @@
+"use client";
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../../styles/signin.css'; // Import the CSS file
+import { BrowserRouter as Router, Routes, Route, useNavigate, Link } from 'react-router-dom';
+import './signin.css'; 
+import SignUp from './SignUp'; 
+import StockForm from '../Stock/stockForm'; 
+import AdminDashboard from '../Admin/AdminDash'; 
+import HRDashboard from '../HR/HRDashboard'; 
+import FactorySupervisor from '../Factory/factorySuper'; 
 
-const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function AuthPage() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    role: 'worker'
+  });
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => { // Added missing handleSubmit function
     e.preventDefault();
-    try {
-      const response = await axios.post('/api/auth/signin', { email, password });
-      // Handle response (store token, redirect, etc.)
-      console.log(response.data);
-    } catch (error) {
-      console.error('Sign-in failed:', error);
+    
+    if (formData.role === 'worker') {
+      navigate('/stock');
+    } else if (formData.role === 'admin') {
+      navigate('/admin');
+    } else if (formData.role === 'supervisor') {
+      navigate('/factory');
+    } else if (formData.role === 'field') {
+      navigate('/field');
+    } else if (formData.role === 'hr') {
+      navigate('/hr');
     }
   };
 
   return (
-    <div className="signin-container">
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Sign In</button>
-      </form>
+    <div className="auth-container">
+      <div className="auth-header">
+        <h1>SDK Alkaline Water Co.</h1>
+        <p className="subtitle">Change your water, Change your life!</p>
+      </div>
+      <div className="auth-card">
+        <div className="water-wave"></div>      
+        
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <label>Name</label>
+          </div>
+
+          <div className="input-group">
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <label>Email</label>
+          </div>
+
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <label>Password</label>
+          </div>
+
+          <div className="select-group">
+            <label>Choose role</label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+            >
+              <option value="worker">Worker</option>
+              <option value="admin">Admin</option>
+              <option value="hr">HR</option>
+              <option value="supervisor">Supervisor</option>
+              <option value="field">Field Manager</option> {/* Fixed typo from 'filed' to 'field' */}
+            </select>
+          </div>
+
+          <button type="submit" className="submit-btn">
+            Sign in
+            <div className="liquid"></div>
+          </button>
+        </form>
+
+        <div className="auth-footer">
+          <p>Don't have an account? <Link to="/signup" className="link">Sign up</Link></p> {/* Fixed typo in "Don't" */}
+        </div>
+      </div>
     </div>
   );
-};
+}
+
+function SignIn() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthPage />} />
+        <Route path="/worker/signin" element={<AuthPage userType="worker" />} />
+        <Route path="/admin/signup" element={<SignUp userType="admin" redirectPath="/admin" />} />
+        <Route path="/supervisor/signin" element={<AuthPage userType="supervisor" />} />
+        <Route path="/hr/signup" element={<SignUp userType='hr' redirectPath="/hr" />} />
+        <Route path='/hr' element={<HRDashboard />} />
+        <Route path='/factory' element={<FactorySupervisor />} /> {/* Fixed component name */}
+        <Route path="/stock" element={<StockForm />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
+  );
+}
 
 export default SignIn;

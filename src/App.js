@@ -6,6 +6,7 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import StockForm from './components/Stock/stockForm';
 import AdminDashboard from './components/Admin/AdminDash';
+import HRDashboard from './components/HR/HRDashboard';
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -33,6 +34,12 @@ function AuthPage() {
       navigate('/stock');
     } else if (formData.role === 'admin') {
       navigate('/admin');
+    } else if (formData.role === 'supervisor') {
+      navigate('/factory')
+    } else if (formData.role === 'field') {
+      navigate('/field')
+    } else if (formData.role === 'hr') {
+      navigate('/hr') 
     }
   };
 
@@ -41,7 +48,7 @@ function AuthPage() {
     <div className="auth-container">
        <div className="auth-header">
           <h1>SDK Alkaline Water Co.</h1>
-          <p className="subtitle">Pure hydration experience</p>
+          <p className="subtitle">Change your water, Change your life!</p>
         </div>
       <div className="auth-card">
         <div className="water-wave"></div>      
@@ -101,6 +108,9 @@ function AuthPage() {
             >
               <option value="worker">Worker</option>
               <option value="admin">Admin</option>
+              <option value="hr">HR</option>
+              <option value="supervisor">Supervisor</option>
+              <option value="filed">Field Manager</option>
             </select>
           </div>
 
@@ -125,11 +135,15 @@ function App() {
         <Route path="/" element={<AuthPage />} />
         <Route path="/worker/signin" element={<SignIn userType="worker" redirectPath="/stock" />} />
         <Route path="/admin/signup" element={<SignUp userType="admin" redirectPath="/admin" />} />
+        <Route path="/supervisor/signin" element={<SignIn userType="supervisor" redirectPath="/factory" />} />
+        <Route path="/hr/signup" element={<SignUp userType='hr' redirectPath="/hr" />} />
+        <Route path='/hr' element={<HRDashboard />} />
+        <Route path='/factory' element={<factorySuper />} />        
         <Route path="/stock" element={<StockForm />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
       <footer className="footer">
-        &copy; {new Date().getFullYear()} StockFlow. All rights reserved.
+        &copy; {new Date().getFullYear()} SDK Alkaline Water Co. All rights reserved.
       </footer>
     </Router>
   );
