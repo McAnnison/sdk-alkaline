@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link } from 'react-router-dom';
-import './signin.css'; 
+import '../../styles/signin.css'; 
 import SignUp from './SignUp'; 
 import StockForm from '../Stock/stockForm'; 
 import AdminDashboard from '../Admin/AdminDash'; 
 import HRDashboard from '../HR/HRDashboard'; 
-import FactorySupervisor from '../Factory/factorySuper'; 
+import FactorySupervisor from '../Factory/FactorySuper'; 
 
 function AuthPage() {
   const navigate = useNavigate();

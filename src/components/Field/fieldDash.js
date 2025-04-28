@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useNavigate } from 'react-router-dom';
 import '../../styles/field.css';
 
-function fieldDash() {
-  const router = useRouter();
+function FieldDash() {
+  const router = useNavigate();
   const [deliveries, setDeliveries] = useState([]);
   const [formData, setFormData] = useState({
     cartonsToDispatch: '',
@@ -347,4 +347,4 @@ function fieldDash() {
   );
 }
 
-export default fieldDash;
+export default FieldDash;

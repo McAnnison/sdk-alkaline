@@ -337,23 +337,21 @@ function HRDashboard() {
           <Statistic
             title="Total Amount Spent"
             value={totalSpent}
-            prefix="₦"
-            prefix={<DollarOutlined />}
+            prefix="GH₵"                
           />
         </Card>
         <Card className="stat-card">
           <Statistic
             title="Pending Payments"
             value={pendingPayments}
-            prefix="₦"
-            prefix={<DollarOutlined />}
+            prefix="GH₵"  
           />
         </Card>
         <Card className="stat-card">
           <Statistic
             title="Inventory Items"
             value={inventoryData.length}
-            prefix={<BarChartOutlined />}
+            prefix={<BarChartOutlined />} 
           />
         </Card>
       </div>
@@ -463,7 +461,7 @@ function HRDashboard() {
 
           <Form.Item
             name="amountPaid"
-            label="Amount Paid (₦)"
+            label="Amount Paid (GH₵)"
             rules={[{ required: true, message: 'Please input amount' }]}
           >
             <Input type="number" />

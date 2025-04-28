@@ -7,6 +7,8 @@ import SignUp from './components/Auth/SignUp';
 import StockForm from './components/Stock/stockForm';
 import AdminDashboard from './components/Admin/AdminDash';
 import HRDashboard from './components/HR/HRDashboard';
+import FieldDash from './components/Field/FieldDash';
+import FactorySuper from './components/Factory/FactorySuper';
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -45,7 +47,7 @@ function AuthPage() {
 
   return (
    
-    <div className="auth-container">
+    <div className="auth-contain</div>er">
        <div className="auth-header">
           <h1>SDK Alkaline Water Co.</h1>
           <p className="subtitle">Change your water, Change your life!</p>
@@ -136,9 +138,12 @@ function App() {
         <Route path="/worker/signin" element={<SignIn userType="worker" redirectPath="/stock" />} />
         <Route path="/admin/signup" element={<SignUp userType="admin" redirectPath="/admin" />} />
         <Route path="/supervisor/signin" element={<SignIn userType="supervisor" redirectPath="/factory" />} />
+        <Route path="/supervisor/signup" element={<SignUp userType="supervisor" redirectPath="/factory" />} />
         <Route path="/hr/signup" element={<SignUp userType='hr' redirectPath="/hr" />} />
+        <Route path="/field/signup" element={<SignUp userType='field' redirectPath="/field" />} />
         <Route path='/hr' element={<HRDashboard />} />
-        <Route path='/factory' element={<factorySuper />} />        
+        <Route path='/field' element={<FieldDash />} />
+        <Route path='/factory' element={<FactorySuper />} />       
         <Route path="/stock" element={<StockForm />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>

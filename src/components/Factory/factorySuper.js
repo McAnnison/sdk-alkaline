@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/factory.css';
 
-function factorySupervisor() {
+function FactorySuper() {
   const [formData, setFormData] = useState({
     date: new Date().toISOString().split('T')[0],
     filterAvailable: false,
@@ -366,4 +366,4 @@ function factorySupervisor() {
   );
 }
 
-export default factorySupervisor;
+export default FactorySuper;
