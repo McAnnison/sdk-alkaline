@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/stock.css';
 
 function StockForm() {
@@ -16,6 +16,22 @@ function StockForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  // Calculate totals whenever openingStock, todaysProduction, or dispatch changes
+  useEffect(() => {
+    const opening = parseFloat(formData.openingStock) || 0;
+    const production = parseFloat(formData.todaysProduction) || 0;
+    const dispatch = parseFloat(formData.dispatch) || 0;
+    
+    const total = opening + production;
+    const closing = total - dispatch;
+    
+    setFormData(prev => ({
+      ...prev,
+      totalInStock: total > 0 ? total.toString() : '',
+      closingStock: closing > 0 ? closing.toString() : ''
+    }));
+  }, [formData.openingStock, formData.todaysProduction, formData.dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,7 +80,7 @@ function StockForm() {
         throw new Error(errorData.error || 'Failed to submit stock data');
       }
       
-      const result = await response.json();
+      await response.json();
       setSuccess('Stock data saved successfully!');
       // Reset form
       setFormData({
@@ -104,25 +120,27 @@ function StockForm() {
                 value={formData.openingStock}
                 onChange={handleChange}
                 required
+                min="0"
               />
-              <label>Todays Production</label>
+              <label>Today's Production</label>
               <input
                 type="number"
                 name="todaysProduction"
                 value={formData.todaysProduction}
                 onChange={handleChange}
                 required
+                min="0"
               />
             </div>
 
             <div className="form-group">
-              <label>Total in stock</label>
+              <label>Total in stock (auto-calculated)</label>
               <input
                 type="number"
                 name="totalInStock"
                 value={formData.totalInStock}
-                onChange={handleChange}
-                required
+                readOnly
+                className="read-only-input"
               />
             </div>
 
@@ -134,17 +152,18 @@ function StockForm() {
                 value={formData.dispatch}
                 onChange={handleChange}
                 required
+                min="0"
               />
             </div>
 
             <div className="form-group">
-              <label>Closing stock</label>
+              <label>Closing stock (auto-calculated)</label>
               <input
                 type="number"
                 name="closingStock"
                 value={formData.closingStock}
-                onChange={handleChange}
-                required
+                readOnly
+                className="read-only-input"
               />
             </div>
 
@@ -156,6 +175,7 @@ function StockForm() {
                 value={formData.waterLevel}
                 onChange={handleChange}
                 required
+                min="0"
               />
             </div>
 
@@ -192,5 +212,4 @@ function StockForm() {
     </>
   );
 }
-
 export default StockForm;
